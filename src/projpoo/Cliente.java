@@ -6,10 +6,15 @@ import java.util.Date;
  *
  * @author clara
  */
-public class Cliente extends Usuario {
+public class Cliente extends Pessoa {
     
-    public Cliente(String login, String senha, String email, char tipo, String nome, String end, String tel, String cpf, Date data) {
-        super(login, senha, email, tipo, nome, end, tel, cpf, data);
+    private String login;
+    private String senha;
+    
+    public Cliente(String nome, String end, String tel, String cpf, Date data) {
+        super(nome, end, tel, cpf, data);
     }
+    
+    
     
 }

@@ -11,9 +11,9 @@ public class ProjPoo {
 
     public static void main(String[] args) {
         
-        char op_bemvindo = '0';  
+        char op_bemvindo;  
         do{
-            System.out.printf("Bem Vindo!\n\nEscolha uma das opções:\n1 - Login\n2 - Cadastro\n:");
+            System.out.printf("Bem Vindo!\n\nEscolha uma das opções:\n0 - Sair\n1 - Login\n2 - Cadastro\n:");
             Scanner in = new Scanner(System.in);
             op_bemvindo = in.next().charAt(0);
 
@@ -27,7 +27,7 @@ public class ProjPoo {
                 default:
                     break;
             }
-        }while(op_bemvindo != 1 && op_bemvindo != 2);
+        }while(op_bemvindo == 0);
     }
     
 }

@@ -11,10 +11,12 @@ import java.util.Date;
  *
  * @author clara
  */
-public class Gerencia extends Usuario {
+public class Gerencia extends Pessoa {
     
-    public Gerencia(String login, String senha, String email, char tipo, String nome, String end, String tel, String cpf, Date data) {
-        super(login, senha, email, tipo, nome, end, tel, cpf, data);
+    public Gerencia(String nome, String end, String tel, String cpf, Date data) {
+        super(nome, end, tel, cpf, data);
     }
+    
+
     
 }
