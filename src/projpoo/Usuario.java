@@ -5,22 +5,18 @@
  */
 package projpoo;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
  * @author clara
  */
 public class Usuario extends Pessoa {
-        
+
     private String login;
     private String senha;
     private String email;
-    private List lista = new ArrayList();
-    
-    
+
     public Usuario(String nome, String end, String tel, String cpf, Date data) {
         super(nome, end, tel, cpf, data);
     }
@@ -30,7 +26,7 @@ public class Usuario extends Pessoa {
         this.login = login;
         this.senha = senha;
     }
-    
+
     public String getLogin() {
         return login;
     }
@@ -46,7 +42,5 @@ public class Usuario extends Pessoa {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    
-    
+
 }
