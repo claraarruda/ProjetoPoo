@@ -17,6 +17,15 @@ public class Venda {
     private Produto produto;
     private int quantidade;
     private Cliente cliente;
+    private String tipoPagamento;
+
+    public String getTipoPagamento() {
+        return tipoPagamento;
+    }
+
+    public void setTipoPagamento(String tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
+    }
 
     public Date getData_venda() {
         return data_venda;
@@ -49,6 +58,5 @@ public class Venda {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
-    
+
 }

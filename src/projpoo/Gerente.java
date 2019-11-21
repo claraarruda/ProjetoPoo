@@ -13,8 +13,18 @@ import java.util.Date;
  */
 public class Gerente extends Usuario {
     
+    private int matricula;
+    
     public Gerente(String login, String senha, String nome, String end, String tel, String cpf, Date data) {
         super(login, senha, nome, end, tel, cpf, data);
     }
-    
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+        
 }
