@@ -15,14 +15,12 @@ public class Produto {
     private final String nome;
     private String cor;
     private int tamanho;
-    private int quantidade;
 
-    public Produto(double preco, String nome, String cor, int tamanho, int quantidade) {
+    public Produto(double preco, String nome, String cor, int tamanho) {
         this.preco = preco;
         this.nome = nome;
         this.cor = cor;
         this.tamanho = tamanho;
-        this.quantidade = quantidade;
     }
 
     public double getPreco() {
@@ -49,12 +47,5 @@ public class Produto {
         this.tamanho = tamanho;
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
        
 }

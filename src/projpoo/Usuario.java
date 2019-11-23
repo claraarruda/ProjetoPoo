@@ -15,7 +15,6 @@ public class Usuario extends Pessoa {
 
     private String login;
     private String senha;
-    private String email;
 
     public Usuario(String nome, String end, String tel, String cpf, Date data) {
         super(nome, end, tel, cpf, data);
