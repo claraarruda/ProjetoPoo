@@ -1,4 +1,4 @@
-package projpoo;
+package projpoo.model;
 
 import java.util.Date;
 
@@ -11,8 +11,8 @@ public abstract class Pessoa {
     private String nome;
     private String endereço;
     private String telefone;
-    private final String cpf;
-    private final Date nascimento;
+    private String cpf;
+    private Date nascimento;
     
     public Pessoa(String nome, String end, String tel, String cpf, Date data) {
         this.nome = nome;
@@ -45,5 +45,23 @@ public abstract class Pessoa {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }      
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Date getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
+    }
+    
+    
     
 }

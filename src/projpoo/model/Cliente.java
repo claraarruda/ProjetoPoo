@@ -1,4 +1,4 @@
-package projpoo;
+package projpoo.model;
 
 import java.util.Date;
 import java.util.Objects;
@@ -11,9 +11,10 @@ public class Cliente extends Usuario {
     
     private String email;
 
-    public Cliente(String login, String senha, String nome, String end, String tel, String cpf, Date data) {
+    public Cliente(String email, String login, String senha, String nome, String end, String tel, String cpf, Date data) {
         super(login, senha, nome, end, tel, cpf, data);
-    }  
+        this.email = email;
+    }
     
     public String getEmail() {
         return email;
@@ -21,13 +22,12 @@ public class Cliente extends Usuario {
 
     public void setEmail(String email) {
         this.email = email;
-    }
+    }        
 
     @Override
     public String toString() {
         return "Cliente{" + "email=" + email + '}';
     }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -46,7 +46,7 @@ public class Cliente extends Usuario {
         }
         return true;
     }
-
-        
+    
+    
     
 }
