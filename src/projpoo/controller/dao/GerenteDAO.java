@@ -15,7 +15,7 @@ import projpoo.view.Manager;
  * @author clara
  */
 public class GerenteDAO {
-    
+
     Manager m = new Manager();
     List<Gerente> gerentes = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class GerenteDAO {
             }
         }
     }
-    
+
     public void buscarCpf(String cpf) {
         for (int i = 0; i < gerentes.size(); i++) {
             if (gerentes.get(i).getCpf().equals(cpf)) {
@@ -60,7 +60,7 @@ public class GerenteDAO {
                 System.out.println("Login: " + gerentes.get(i).getLogin());
                 System.out.println("CPF: " + gerentes.get(i).getCpf());
                 System.out.println("Matricula: " + gerentes.get(i).getMatricula());
-                
+
             } else {
                 m.naoEncontrado();
             }
@@ -80,10 +80,6 @@ public class GerenteDAO {
                 m.naoEncontrado();
             }
         }
-    }
-
-    public List<Gerente> getGerentes() {
-        return gerentes;
     }
 
 }

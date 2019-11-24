@@ -11,12 +11,24 @@ package projpoo.view;
  */
 public class Manager {
 
+    public void boasVindas(){
+        System.out.println("BEM VINDO!\n\nGreatWalk\n>>>> Maior loja de calçados de toda Internet <<<<\n");
+    }
+    
+    public void senhaIncorreta(){
+        System.out.println("Senha incorreta! Digite: ");
+    }
+    
     public void askNome() {
         System.out.println("Digite o nome: ");
     }
 
     public void askEmail() {
         System.out.println("Digite o email: ");
+    }
+    
+    public void askPagamento(){
+        System.out.println("Digite o tipo de pagamento: ");
     }
 
     public void askData() {

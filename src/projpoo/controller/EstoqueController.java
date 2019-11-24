@@ -40,6 +40,10 @@ public class EstoqueController {
         dao.remover(nome);
         m.removido();
     }
+    
+    public void lista_estq(){
+        dao.listar();
+    }
 
     public void busca_nome() {
         m.askNome();
@@ -48,7 +52,7 @@ public class EstoqueController {
         dao.buscarNome(nome);
     }
 
-    public void busca_login() {
+    public void busca_tam() {
         m.askTamanho();
         int tam = in.nextInt();
         dao.buscarTamanho(tam);

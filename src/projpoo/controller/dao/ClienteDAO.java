@@ -81,6 +81,19 @@ public class ClienteDAO {
             }
         }
     }
+    
+    public boolean buscarLoginSenha(String login, String senha) {
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getLogin().equals(login)) {
+                return clientes.get(i).getSenha().equals(senha);
+            } else {
+                m.naoEncontrado();
+                return false;
+            }
+        }
+        return buscarLoginSenha(login, senha);
+    }
+    
 
     public List<Cliente> getClientes() {
         return clientes;

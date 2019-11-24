@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import projpoo.model.Estoque;
+import projpoo.model.Produto;
 import projpoo.view.Manager;
 
 /**
@@ -37,7 +38,7 @@ public class EstoqueDAO {
         }
     }
 
-    public void listarClientes() {
+    public void listar() {
         if (estoques.isEmpty()) {
             m.listaVazia();
         } else {
@@ -63,6 +64,19 @@ public class EstoqueDAO {
                 m.naoEncontrado();
             }
         }
+    }
+    
+    public boolean buscaNome(String nome) {
+        boolean c = false;
+        for (int i = 0; i < estoques.size(); i++) {
+            if (estoques.get(i).getProduto().getNome().equals(nome)) {
+                c = true;
+            } else {
+                m.naoEncontrado();
+                c = false;
+            }
+        }
+        return c;
     }
 
     public void buscarTamanho(int tam) {

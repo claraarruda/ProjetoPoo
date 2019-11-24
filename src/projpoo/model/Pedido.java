@@ -15,16 +15,26 @@ import java.util.List;
  */
 public class Pedido {
 
-    private Date data_venda;
-    private List<Produto> carrinho = new ArrayList<>();
+    private final String data_venda;
+    private List<String> carrinho = new ArrayList<>();
     private Cliente cliente;
     private String tipoPagamento;
 
-    public List<Produto> getListaItens() {
+    public Pedido(String data_venda, Cliente cliente, String tipoPagamento) {
+        this.data_venda = data_venda;
+        this.cliente = cliente;
+        this.tipoPagamento = tipoPagamento;
+    }
+       
+    public Pedido(String data_venda){
+        this.data_venda = data_venda;
+    }
+
+    public List<String> getListaItens() {
         return carrinho;
     }
 
-    public void setListaItens(List<Produto> lista_produtos) {
+    public void setListaItens(List<String> lista_produtos) {
         this.carrinho = lista_produtos;
     }
 
@@ -36,12 +46,8 @@ public class Pedido {
         this.tipoPagamento = tipoPagamento;
     }
 
-    public Date getData_venda() {
+    public String getData_venda() {
         return data_venda;
-    }
-
-    public void setData_venda(Date data_venda) {
-        this.data_venda = data_venda;
     }
 
     public Cliente getCliente() {
