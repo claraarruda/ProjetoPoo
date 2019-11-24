@@ -12,7 +12,7 @@ package projpoo.model;
 public class Produto {
     
     private double preco;
-    private final String nome;
+    private String nome;
     private String cor;
     private int tamanho;
 
@@ -47,5 +47,14 @@ public class Produto {
         this.tamanho = tamanho;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    
        
 }

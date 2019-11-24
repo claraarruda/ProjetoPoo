@@ -80,7 +80,7 @@ public class ClienteController {
         m.askEndereco();
         endereco = in.next();
         in.nextLine();
-        cliente.setEndereço(endereco);
+        cliente.setEndereco(endereco);
         
         //cad. email
         m.askEmail();
@@ -99,6 +99,23 @@ public class ClienteController {
         senha = in.next();
         in.nextLine();
         cliente.setSenha(senha);
+                
+    }
+    
+    public void remove_cliente(){
+        m.askLogin();
         
+    }
+    
+    public void atualiza_cliente(){
+        m.askCpf();
+    }
+    
+    public void busca_cpf(){
+        m.askCpf();
+    }
+    
+    public void busca_login(){
+        m.askLogin();
     }
 }

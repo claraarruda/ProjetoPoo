@@ -9,14 +9,14 @@ import java.util.Date;
 public abstract class Pessoa {
     
     private String nome;
-    private String endereço;
+    private String endereco;
     private String telefone;
     private String cpf;
     private Date nascimento;
     
     public Pessoa(String nome, String end, String tel, String cpf, Date data) {
         this.nome = nome;
-        this.endereço = end;
+        this.endereco = end;
         this.telefone = tel;
         this.cpf = cpf;
         this.nascimento = data;
@@ -30,12 +30,12 @@ public abstract class Pessoa {
         this.nome = nome;
     }
 
-    public String getEndereço() {
-        return endereço;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setEndereço(String endereço) {
-        this.endereço = endereço;
+    public void setEndereco(String endereço) {
+        this.endereco = endereço;
     }
 
     public String getTelefone() {

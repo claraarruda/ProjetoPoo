@@ -84,4 +84,12 @@ public class Manager {
         System.out.println("Digite a matricula: ");
     }
     
+    public void listaVazia(){
+        System.out.println("A lista está vazia! 0 cadastros.");
+    }
+    
+    public void naoEncontrado(){
+        System.out.println("Não encontrado!");
+    }
+    
 }
