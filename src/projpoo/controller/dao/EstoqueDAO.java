@@ -7,6 +7,7 @@ package projpoo.controller.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import projpoo.model.Estoque;
 import projpoo.view.Manager;
 
@@ -16,6 +17,7 @@ import projpoo.view.Manager;
  */
 public class EstoqueDAO {
 
+    Scanner in = new Scanner(System.in);
     Manager m = new Manager();
     List<Estoque> estoques = new ArrayList<>();
 
@@ -72,6 +74,20 @@ public class EstoqueDAO {
                 System.out.println("Cor: " + estoques.get(i).getProduto().getCor());
                 System.out.println("Tamanho: " + estoques.get(i).getProduto().getTamanho());
             } else {
+                m.naoEncontrado();
+            }
+        }
+    }
+    
+  
+    public void atualizarEstoque(String nome){
+        for (int i = 0; i < estoques.size(); i++) {
+            if (estoques.get(i).getProduto().getNome().equals(nome)) {
+                m.askQuantidade();
+                int qtd = in.nextInt();
+                estoques.get(i).setQuantidade(qtd);                
+            }
+            else{
                 m.naoEncontrado();
             }
         }

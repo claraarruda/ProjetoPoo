@@ -53,5 +53,12 @@ public class EstoqueController {
         int tam = in.nextInt();
         dao.buscarTamanho(tam);
     }
+    
+    public void atualiza_estoque(){
+        m.askNome();
+        String nome = in.next();
+        in.nextLine();
+        dao.atualizarEstoque(nome);
+    }
 }
 
