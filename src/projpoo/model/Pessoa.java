@@ -1,6 +1,7 @@
 package projpoo.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -12,22 +13,19 @@ public abstract class Pessoa {
     private String endereco;
     private String telefone;
     private String cpf;
-    private Date nascimento;
     
-    public Pessoa(String nome, String end, String tel, String cpf, Date data) {
+    public Pessoa(String nome, String end, String tel, String cpf) {
         this.nome = nome;
         this.endereco = end;
         this.telefone = tel;
         this.cpf = cpf;
-        this.nascimento = data;
     }  
 
+    public Pessoa() {
+    }
+    
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getEndereco() {
@@ -50,18 +48,41 @@ public abstract class Pessoa {
         return cpf;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
-    public Date getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(Date nascimento) {
-        this.nascimento = nascimento;
-    }
     
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pessoa other = (Pessoa) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.endereco, other.endereco)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefone, other.telefone)) {
+            return false;
+        }
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
+        return true;
+    }
     
     
 }

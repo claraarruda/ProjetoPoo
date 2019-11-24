@@ -10,9 +10,9 @@ package projpoo.model;
  * @author clara
  */
 public class Produto {
-    
+
     private double preco;
-    private String nome;
+    private final String nome;
     private String cor;
     private int tamanho;
 
@@ -21,6 +21,11 @@ public class Produto {
         this.nome = nome;
         this.cor = cor;
         this.tamanho = tamanho;
+    }
+
+    public Produto(String nome) {
+        
+        this.nome = nome;
     }
 
     public double getPreco() {
@@ -51,10 +56,4 @@ public class Produto {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    
-       
 }

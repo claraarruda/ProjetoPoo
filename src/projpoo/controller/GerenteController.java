@@ -5,10 +5,8 @@
  */
 package projpoo.controller;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.Date;
 import java.util.Scanner;
+import projpoo.controller.dao.GerenteDAO;
 import projpoo.model.Gerente;
 import projpoo.view.Manager;
 
@@ -17,92 +15,95 @@ import projpoo.view.Manager;
  * @author clara
  */
 public class GerenteController {
-    Gerente gerente;
+
     Manager m = new Manager();
     Scanner in = new Scanner(System.in);
+    GerenteDAO dao = new GerenteDAO();
 
     public void cadastro_gerente() {
-        String nome;
-        String telefone;
-        String matricula;
-        String cpf;
-        String nasc;
-        String login;
-        String senha;
-        String endereco;
 
         //cad. nome
         m.askNome();
-        nome = in.next();
+        String nome = in.next();
         in.nextLine();
-        if (m.validarNome(nome)) {
-            gerente.setNome(nome);
-        } else {
-            m.nomeInvalido();
-        }
 
         //cad. cpf
         m.askCpf();
-        cpf = in.next();
+        String cpf = in.next();
         in.nextLine();
-        if (m.validaCpf(cpf)) {
-            gerente.setCpf(cpf);
-        } else {
+        while (!m.validaCpf(cpf)) {
             m.OpInvalida();
+            cpf = in.next();
+            in.nextLine();
         }
 
-        //cad. nasc
-        m.askData();
-        nasc = in.next();
-        in.nextLine();
-        DateFormat data = DateFormat.getInstance();
-        try {
-            Date da = data.parse(nasc);
-            gerente.setNascimento(da);
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-        
         //cad. telefone
         m.askTelefone();
-        telefone = in.next();
-        in.nextLine();
-        if(m.validarTelefone(telefone)){
-            gerente.setTelefone(telefone);
-        }
-        else{
+        String telefone = in.nextLine();
+        while (!m.validarTelefone(telefone)) {
             m.telefoneInvalido();
+            telefone = in.next();
+            in.nextLine();
         }
-        
-        //cad. matricula
-        
-        
+
         //cad. endereco
         m.askEndereco();
-        endereco = in.next();
+        String endereco = in.next();
         in.nextLine();
-        gerente.setEndereco(endereco);
-               
-       //cad login
+
+        //cad. email
+        m.askMatricula();
+        int matricula = in.nextInt();
+
+        //cad login
         m.askLogin();
-        login = in.next();
+        String login = in.next();
         in.nextLine();
-        gerente.setLogin(login);
-        
+
         //cad. senha
         m.askSenha();
-        senha = in.next();
+        String senha = in.next();
         in.nextLine();
+
+        Gerente gerente = new Gerente();
+        gerente.setNome(nome);
+        gerente.setCpf(cpf);
+        gerente.setEndereco(endereco);
+        gerente.setTelefone(telefone);
+        gerente.setMatricula(matricula);
+        gerente.setLogin(login);
         gerente.setSenha(senha);
-                
+
+        dao.cadastro(gerente);
     }
-    
-    public void remove_gerente(){
+
+    public void remove_cliente() {
+        m.askCpf();
+        String cpf = in.next();
+        in.nextLine();
+        dao.remover(cpf);
+        m.removido();
+    }
+
+    public void busca_cpf() {
+        m.askCpf();
+        String cpf = in.next();
+        in.nextLine();
+        dao.buscarCpf(cpf);
+    }
+
+    public void busca_login() {
         m.askLogin();
-        
+        int matricula = in.nextInt();
+        dao.buscarMatricula(matricula);
     }
-    
-    public void atualiza_gerente(){
-        
+
+    public void remove_gerente() {
+        m.askLogin();
+
+    }
+
+    public void atualiza_gerente() {
+
     }
 }

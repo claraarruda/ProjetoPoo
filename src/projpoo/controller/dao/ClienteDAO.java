@@ -17,21 +17,28 @@ import projpoo.view.Manager;
 public class ClienteDAO {
 
     Manager m = new Manager();
-    private final List<Cliente> clientes = new ArrayList<>();
+    List<Cliente> clientes = new ArrayList<>();
 
     public void cadastro(Cliente cliente) {
         clientes.add(cliente);
     }
-    
-    public void remover(Cliente cliente){
-        clientes.remove(cliente);
-    }
-    
-    public void listarClientes(){
-        if(clientes.isEmpty()){
-            m.listaVazia();
+
+    public void remover(String cpf) {
+        for (int i = 0; i < clientes.size(); i++) {
+            Cliente c = clientes.get(i);
+            if (c.getCpf().equals(cpf)) {
+                System.out.println(c);
+                clientes.remove(c);
+            } else {
+                m.naoEncontrado();
+            }
         }
-        else{
+    }
+
+    public void listarClientes() {
+        if (clientes.isEmpty()) {
+            m.listaVazia();
+        } else {
             for (int i = 0; i < clientes.size(); i++) {
                 System.out.println("Nome: " + clientes.get(i).getNome());
                 System.out.println("Telefone: " + clientes.get(i).getTelefone());
@@ -39,33 +46,42 @@ public class ClienteDAO {
                 System.out.println("Email: " + clientes.get(i).getEmail());
                 System.out.println("Login: " + clientes.get(i).getLogin());
                 System.out.println("CPF: " + clientes.get(i).getCpf());
+
+            }
+        }
+    }
+    
+    public void buscarCpf(String cpf) {
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getCpf().equals(cpf)) {
+                System.out.println("Nome: " + clientes.get(i).getNome());
+                System.out.println("Telefone: " + clientes.get(i).getTelefone());
+                System.out.println("Endereco: " + clientes.get(i).getEndereco());
+                System.out.println("Email: " + clientes.get(i).getEmail());
+                System.out.println("Login: " + clientes.get(i).getLogin());
+                System.out.println("CPF: " + clientes.get(i).getCpf());
                 
-            }
-        }
-    }
-    
-    public void buscarCpf(String cpf){
-        for (int i = 0; i < clientes.size(); i++) {
-            if(clientes.get(i).getCpf().equals(cpf)){
-                clientes.get(i);
-            }
-            else{
+            } else {
                 m.naoEncontrado();
             }
         }
     }
-    
-    public void buscarLogin(String login){
+
+    public void buscarLogin(String login) {
         for (int i = 0; i < clientes.size(); i++) {
-            if(clientes.get(i).getLogin().equals(login)){
-                clientes.get(i);
-            }
-            else{
+            if (clientes.get(i).getLogin().equals(login)) {
+                System.out.println("Nome: " + clientes.get(i).getNome());
+                System.out.println("Telefone: " + clientes.get(i).getTelefone());
+                System.out.println("Endereco: " + clientes.get(i).getEndereco());
+                System.out.println("Email: " + clientes.get(i).getEmail());
+                System.out.println("Login: " + clientes.get(i).getLogin());
+                System.out.println("CPF: " + clientes.get(i).getCpf());
+            } else {
                 m.naoEncontrado();
             }
         }
     }
-    
+
     public List<Cliente> getClientes() {
         return clientes;
     }

@@ -15,34 +15,26 @@ public class Manager {
         System.out.println("Digite o nome: ");
     }
 
-    public boolean validarNome(String n) {
-        return n.matches("[A-Z][a-z]+([ ][A-Z][a-z]+)*");
-    }
-
-    public void nomeInvalido() {
-        System.out.println("Seu nome não pode conter números, acentos ou caracteres especiais.");
-    }
-
     public void askEmail() {
         System.out.println("Digite o email: ");
     }
 
-    public void askData(){
+    public void askData() {
         System.out.println("Digite a data de nascimento: ");
     }
-            
-    public void askEndereco(){
+
+    public void askEndereco() {
         System.out.println("Digite o endereço: ");
     }
-    
-    public void askLogin(){
+
+    public void askLogin() {
         System.out.println("Digite o login: ");
     }
-    
-    public void askSenha(){
+
+    public void askSenha() {
         System.out.println("Digite a senha: ");
     }
-    
+
     public void askTelefone() {
         System.out.println("Digite o telefone: ");
     }
@@ -63,33 +55,45 @@ public class Manager {
         System.out.println("Por favor, digite seu CPF: ");
     }
 
-    public boolean validaCpf(String cpf) {  
-        ValidaCpf v = new ValidaCpf();  
-        return cpf.matches("[0-9]{11}") && v.validarCpf(cpf);  
-    }  
-    
-    public void askTamanho(){
+    public boolean validaCpf(String cpf) {
+        ValidaCpf v = new ValidaCpf();
+        return cpf.matches("[0-9]{11}") && v.validarCpf(cpf);
+    }
+
+    public void askTamanho() {
         System.out.println("Digite o tamanho do calçado: ");
     }
-    
-    public void askPreco(){
+
+    public void askPreco() {
         System.out.println("Digite o preço do calçado: ");
     }
-    
-    public void askCor(){
+
+    public void askCor() {
         System.out.println("Digite a cor predominante: ");
     }
 
-    public void askMatricula(){
+    public void askMatricula() {
         System.out.println("Digite a matricula: ");
     }
-    
-    public void listaVazia(){
+
+    public void listaVazia() {
         System.out.println("A lista está vazia! 0 cadastros.");
     }
-    
-    public void naoEncontrado(){
+
+    public void naoEncontrado() {
         System.out.println("Não encontrado!");
     }
+
+    public void removido() {
+        System.out.println("Removido com sucesso!");
+    }
+
+    public void naoRemovido() {
+        System.out.println("Remoção invalida");
+    }
     
+    public void askQuantidade(){
+        System.out.println("Digite a quantidade: ");
+    }
+
 }

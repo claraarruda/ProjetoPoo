@@ -5,7 +5,7 @@
  */
 package projpoo.model;
 
-import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -16,8 +16,12 @@ public class Usuario extends Pessoa {
     private String login;
     private String senha;
 
-    public Usuario(String login, String senha, String nome, String end, String tel, String cpf, Date data) {
-        super(nome, end, tel, cpf, data);
+    public Usuario() {
+
+    }
+
+    public Usuario(String login, String senha, String nome, String end, String tel, String cpf) {
+        super(nome, end, tel, cpf);
         this.login = login;
         this.senha = senha;
     }
@@ -38,4 +42,26 @@ public class Usuario extends Pessoa {
         this.senha = senha;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (!Objects.equals(this.login, other.login)) {
+            return false;
+        }
+        if (!Objects.equals(this.senha, other.senha)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

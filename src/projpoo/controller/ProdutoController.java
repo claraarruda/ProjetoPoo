@@ -14,58 +14,40 @@ import projpoo.view.Manager;
  * @author clara
  */
 public class ProdutoController {
-    Produto produto;
+
     Manager m = new Manager();
     Scanner in = new Scanner(System.in);
-
+    EstoqueController eq = new EstoqueController(); 
+    
     public void cadastro_produto() {
         String nome;
         double preco;
         String cor;
         int tamanho;
-        
+
         //cad. nome
         m.askNome();
         nome = in.next();
         in.nextLine();
-        if (m.validarNome(nome)) {
-            produto.setNome(nome);
-        } else {
-            m.nomeInvalido();
-        }
-        
+
         //cad. tamanho
         m.askTamanho();
         tamanho = in.nextInt();
-        produto.setTamanho(tamanho);
 
         //cad. preco
         m.askPreco();
         preco = in.nextDouble();
-        produto.setPreco(preco);
-        
+
         //cad. cor
         m.askCor();
         cor = in.next();
         in.nextLine();
-        produto.setCor(cor);
-        
-    }
-        
-    public void remove_produto(){
-        m.askNome();
-        
-    }
-    
-    public void atualiza_produto(){
-        m.askNome();
-    }
-    
-    public void busca_nome(){
-        m.askNome();
-    }
-    
-    public void busca_tamanho(){
-        m.askTamanho();
+
+        Produto produto = new Produto(nome);
+        produto.setTamanho(tamanho);
+        produto.setPreco(preco);
+        produto.setCor(cor);  
+
+        eq.cadastro_estq(produto);        
     }
 }

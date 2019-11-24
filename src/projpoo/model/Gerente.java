@@ -5,8 +5,6 @@
  */
 package projpoo.model;
 
-import java.util.Date;
-
 /**
  *
  * @author clara
@@ -15,10 +13,14 @@ public class Gerente extends Usuario {
     
     private int matricula;
     
-    public Gerente(String login, String senha, String nome, String end, String tel, String cpf, Date data) {
-        super(login, senha, nome, end, tel, cpf, data);
+    public Gerente(String login, String senha, String nome, String end, String tel, String cpf) {
+        super(login, senha, nome, end, tel, cpf);
     }
 
+    public Gerente(){
+        
+    }
+    
     public int getMatricula() {
         return matricula;
     }
