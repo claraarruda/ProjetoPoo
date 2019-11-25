@@ -9,9 +9,9 @@ import java.util.Scanner;
 import projpoo.controller.ClienteController;
 import projpoo.controller.EstoqueController;
 import projpoo.controller.GerenteController;
+import projpoo.controller.PedidoController;
 import projpoo.controller.ProdutoController;
 import projpoo.controller.dao.ClienteDAO;
-import projpoo.controller.dao.EstoqueDAO;
 import projpoo.controller.dao.GerenteDAO;
 
 /**
@@ -23,6 +23,7 @@ public class Menus {
     Scanner in = new Scanner(System.in);
     char op;
     Manager m = new Manager();
+    PedidoController pdc = new PedidoController();
     EstoqueController ec = new EstoqueController();
     ProdutoController pc = new ProdutoController();
     ClienteController cc = new ClienteController();
@@ -36,10 +37,10 @@ public class Menus {
             op = in.next().charAt(0);
             switch (op) {
                 case '1':
-                    System.out.println("Domingo");
+                    login();
                     break;
                 case '2':
-                    menuCadastro();
+                    cc.cadastro_cliente();
                     break;
                 case '3':
                     System.out.println("Autenticação necessária!");
@@ -52,49 +53,31 @@ public class Menus {
                         in.nextLine();
                     }
                     menuGerente();
-            }
-        } while (op != '0');
-    }
-
-    public void menuCadastro() {
-        do {
-            System.out.println("Escolha uma das opções:\n0 - Sair\n1 - Cadastro de cliente\n2 - Cadastro de Gerentes (necessária autenticação)\n: ");
-            switch (op) {
-                case '1':
-                    cc.cadastro_cliente();
+                default:
                     break;
-                case '2':
-
             }
         } while (op != '0');
     }
 
     public void login() {
-        System.out.printf("Se desejar sair, digite SAIR.\n");
         m.askLogin();
         String login = in.next();
         in.nextLine();
-        String sair = "sair";
-        if (login.equalsIgnoreCase(sair)) {
-            menuPrincipal();
-        } else {
-            m.askSenha();
-            String senha = in.next();
+        m.askSenha();
+        String senha = in.next();
+        in.nextLine();
+        if (!cd.buscarLoginSenha(login, senha)) {
+            m.senhaIncorreta();
+            senha = in.next();
             in.nextLine();
-            if (!cd.buscarLoginSenha(login, senha)) {
-                m.senhaIncorreta();
-                senha = in.next();
-                in.nextLine();
-            } else {
-                cliente();
-            }
+        } else {
+            cliente();
         }
-
     }
-    
-    public void cliente(){
+
+    public void cliente() {
         do {
-            System.out.println("Escolha uma das opções:\n0 - sair\n1 - Ver todos produtos\n2 - Pesquisar por nome\n3 - Pesquisar por tamanho\n4 - Adicionar produtos ao carrinho\n5 - Comprar\n6 - Historico de compras");
+            System.out.println("Escolha uma das opções:\n0 - sair\n1 - Ver todos produtos\n2 - Pesquisar por nome\n3 - Pesquisar por tamanho\n4 - Adicionar produtos ao carrinho\n5 - Remover produtos do carrinho\n: ");
             switch (op) {
                 case '1':
                     ec.lista_estq();
@@ -106,13 +89,13 @@ public class Menus {
                     ec.busca_tam();
                     break;
                 case '4':
-                    ec.lista_estq();
+                    pdc.cadastro_pedido();
+                    pdc.totalPedido();
                     break;
                 case '5':
-                    ec.lista_estq();
+                    pdc.remover();
                     break;
-                case '6':
-                    ec.lista_estq();
+                default:
                     break;
             }
         } while (op != '0');
@@ -127,6 +110,8 @@ public class Menus {
                     gc.cadastro_gerente();
                 case '2':
                     loginGerente();
+                default:
+                    break;
             }
 
         } while (op != '0');

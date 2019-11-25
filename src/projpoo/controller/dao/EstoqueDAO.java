@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import projpoo.model.Estoque;
-import projpoo.model.Produto;
 import projpoo.view.Manager;
 
 /**
@@ -92,7 +91,6 @@ public class EstoqueDAO {
             }
         }
     }
-    
   
     public void atualizarEstoque(String nome){
         for (int i = 0; i < estoques.size(); i++) {

@@ -6,7 +6,6 @@
 package projpoo.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,41 +14,20 @@ import java.util.List;
  */
 public class Pedido {
 
-    private final String data_venda;
-    private List<String> carrinho = new ArrayList<>();
+    private Produto produto;
     private Cliente cliente;
-    private String tipoPagamento;
 
-    public Pedido(String data_venda, Cliente cliente, String tipoPagamento) {
-        this.data_venda = data_venda;
-        this.cliente = cliente;
-        this.tipoPagamento = tipoPagamento;
-    }
-       
-    public Pedido(String data_venda){
-        this.data_venda = data_venda;
+    public Pedido() {
+    }    
+
+    public Produto getProduto() {
+        return produto;
     }
 
-    public List<String> getListaItens() {
-        return carrinho;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
-
-    public void setListaItens(List<String> lista_produtos) {
-        this.carrinho = lista_produtos;
-    }
-
-    public String getTipoPagamento() {
-        return tipoPagamento;
-    }
-
-    public void setTipoPagamento(String tipoPagamento) {
-        this.tipoPagamento = tipoPagamento;
-    }
-
-    public String getData_venda() {
-        return data_venda;
-    }
-
+    
     public Cliente getCliente() {
         return cliente;
     }

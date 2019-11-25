@@ -77,7 +77,7 @@ public class GerenteController {
         dao.cadastro(gerente);
     }
 
-    public void remove_cliente() {
+    public void remove_gerente() {
         m.askCpf();
         String cpf = in.next();
         in.nextLine();
@@ -92,18 +92,9 @@ public class GerenteController {
         dao.buscarCpf(cpf);
     }
 
-    public void busca_login() {
-        m.askLogin();
+    public void busca_matricula() {
+        m.askMatricula();
         int matricula = in.nextInt();
         dao.buscarMatricula(matricula);
-    }
-
-    public void remove_gerente() {
-        m.askLogin();
-
-    }
-
-    public void atualiza_gerente() {
-
     }
 }
