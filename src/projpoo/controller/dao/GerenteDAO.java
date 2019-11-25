@@ -47,8 +47,7 @@ public class GerenteDAO {
         }
     }
 
-
-public boolean buscarCpf(String cpf) {
+    public boolean buscarCpf(String cpf) {
         for (int i = 0; i < gerentes.size(); i++) {
             if (gerentes.get(i).getCpf().equals(cpf)) {
                 System.out.println("Nome: " + gerentes.get(i).getNome());
@@ -58,7 +57,16 @@ public boolean buscarCpf(String cpf) {
                 System.out.println("CPF: " + gerentes.get(i).getCpf());
                 System.out.println("Matricula: " + gerentes.get(i).getMatricula());
                 return true;
-            } 
+            }
+        }
+        return false;
+    }
+
+    public boolean buscaLogin(String login) {
+        for (int i = 0; i < gerentes.size(); i++) {
+            if (gerentes.get(i).getLogin().equals(login)) {
+                return true;
+            }
         }
         return false;
     }
@@ -73,18 +81,18 @@ public boolean buscarCpf(String cpf) {
                 System.out.println("CPF: " + gerentes.get(i).getCpf());
                 System.out.println("Matricula: " + gerentes.get(i).getMatricula());
                 return true;
-            } 
+            }
         }
         return false;
     }
-    
-    public boolean buscaLoginSenha(String l, String s){
+
+    public boolean buscaLoginSenha(String l, String s) {
         for (int i = 0; i < gerentes.size(); i++) {
             if (gerentes.get(i).getLogin().equals(l)) {
-                if(gerentes.get(i).getSenha().equals(s)){
+                if (gerentes.get(i).getSenha().equals(s)) {
                     return true;
                 }
-            } 
+            }
         }
         return false;
     }

@@ -21,7 +21,7 @@ public class GerenteController {
     GerenteDAO dao = new GerenteDAO();
 
     public void cadastro_gerente() {
-
+        Gerente gerente = new Gerente();
         //cad. nome
         m.askNome();
         String nome = in.next();
@@ -35,6 +35,13 @@ public class GerenteController {
             m.OpInvalida();
             cpf = in.next();
             in.nextLine();
+        }
+        if (dao.buscarCpf(cpf)) {
+            System.out.println("cpf já existe. Digite novamente: ");
+            cpf = in.next();
+            in.nextLine();
+        } else {
+            gerente.setCpf(cpf);
         }
 
         //cad. telefone
@@ -54,24 +61,33 @@ public class GerenteController {
         //cad. email
         m.askMatricula();
         int matricula = in.nextInt();
+        if (!dao.buscarMatricula(matricula)) {
+            gerente.setMatricula(matricula);
+        } else {
+            System.out.println("matricula já existe. Digite novamente: ");
+            matricula = in.nextInt();
+        }
 
         //cad login
         m.askLogin();
         String login = in.next();
         in.nextLine();
+        if (dao.buscaLogin(login)) {
+            System.out.println("login já existe. Digite novamente: ");
+            login = in.next();
+            in.nextLine();
+        } else {
+            gerente.setLogin(login);
+        }
 
         //cad. senha
         m.askSenha();
         String senha = in.next();
         in.nextLine();
 
-        Gerente gerente = new Gerente();
         gerente.setNome(nome);
-        gerente.setCpf(cpf);
         gerente.setEndereco(endereco);
         gerente.setTelefone(telefone);
-        gerente.setMatricula(matricula);
-        gerente.setLogin(login);
         gerente.setSenha(senha);
 
         dao.cadastro(gerente);
@@ -102,20 +118,20 @@ public class GerenteController {
     public int busca_matricula() {
         m.askMatricula();
         int matricula = in.nextInt();
-        if(dao.buscarMatricula(matricula)){
+        if (dao.buscarMatricula(matricula)) {
             return matricula;
         }
         return '0';
     }
-    
-    public boolean loginSenha(){
+
+    public boolean loginSenha() {
         m.askLogin();
         String l = in.next();
         in.nextLine();
         m.askSenha();
         String s = in.next();
         in.nextLine();
-        if(dao.buscaLoginSenha(l, s)){
+        if (dao.buscaLoginSenha(l, s)) {
             return true;
         }
         return false;

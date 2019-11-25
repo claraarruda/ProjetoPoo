@@ -18,6 +18,7 @@ public class ClienteController {
     ClienteDAO dao = new ClienteDAO();
 
     public void cadastro_cliente() {
+        Cliente cliente = new Cliente();
 
         //cad. nome
         m.askNome();
@@ -28,10 +29,15 @@ public class ClienteController {
         m.askCpf();
         String cpf = in.next();
         in.nextLine();
-        while (!m.validaCpf(cpf)) {
-            m.OpInvalida();
-            cpf = in.next();
-            in.nextLine();
+        if (dao.buscaCpf(cpf)) {
+            System.out.println("cpf já existe. Digite novamente: ");
+            while (!m.validaCpf(cpf)) {
+                m.OpInvalida();
+                cpf = in.next();
+                in.nextLine();
+            }
+        } else {
+            cliente.setCpf(cpf);
         }
 
         //cad. telefone
@@ -57,19 +63,24 @@ public class ClienteController {
         m.askLogin();
         String login = in.next();
         in.nextLine();
+        if (dao.buscaLogin(login)) {
+            System.out.println("login já existe. Digite novamente: ");
+            login = in.next();
+            in.nextLine();
+        } else {
+            cliente.setLogin(login);
+        }
 
         //cad. senha
         m.askSenha();
         String senha = in.next();
         in.nextLine();
 
-        Cliente cliente = new Cliente();
         cliente.setNome(nome);
-        cliente.setCpf(cpf);
         cliente.setEndereco(endereco);
         cliente.setTelefone(telefone);
         cliente.setEmail(email);
-        cliente.setLogin(login);
+
         cliente.setSenha(senha);
 
         dao.cadastro(cliente);
@@ -102,15 +113,15 @@ public class ClienteController {
         }
         return "nao encontrado!";
     }
-    
-    public boolean loginSenha(){
+
+    public boolean loginSenha() {
         m.askLogin();
         String l = in.next();
         in.nextLine();
         m.askSenha();
         String s = in.next();
         in.nextLine();
-        if(dao.buscaLoginSenha(l, s)){
+        if (dao.buscaLoginSenha(l, s)) {
             return true;
         }
         return false;
