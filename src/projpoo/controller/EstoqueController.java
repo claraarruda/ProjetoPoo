@@ -21,48 +21,59 @@ public class EstoqueController {
     Estoque estoque = new Estoque();
     EstoqueDAO dao = new EstoqueDAO();
     Manager m = new Manager();
-    
-    public void cadastro_estq(Produto produto){
-             
+
+    public void cadastro_estq(Produto produto) {
+
         m.askQuantidade();
         int qtd = in.nextInt();
-        
+
         estoque.setProduto(produto);
         estoque.setQuantidade(qtd);
-        
+
         dao.cadastro(estoque);
     }
 
-    public void remove_estq() {
+    public String remove_estq() {
         m.askNome();
         String nome = in.next();
         in.nextLine();
-        dao.remover(nome);
+        if(dao.remover(nome)){
         m.removido();
+            return nome;
+        }
+        return "nao encontrado!";
     }
-    
-    public void lista_estq(){
+
+    public void lista_estq() {
         dao.listar();
     }
 
-    public void busca_nome() {
+    public String busca_nome() {
         m.askNome();
         String nome = in.next();
         in.nextLine();
-        dao.buscarNome(nome);
+        if (dao.buscarNome(nome)) {
+            return nome;
+        }
+        return "nao encontrado!";
     }
 
-    public void busca_tam() {
+    public int busca_tam() {
         m.askTamanho();
         int tam = in.nextInt();
-        dao.buscarTamanho(tam);
+        if (dao.buscarTamanho(tam)) {
+            return tam;
+        }
+        return '0';
     }
-    
-    public void atualiza_estoque(){
+
+    public String atualiza_estoque() {
         m.askNome();
         String nome = in.next();
         in.nextLine();
-        dao.atualizarEstoque(nome);
+        if (dao.atualizarEstoque(nome)) {
+            return nome;
+        }
+        return "nao encontrado";
     }
 }
-

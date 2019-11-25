@@ -77,24 +77,47 @@ public class GerenteController {
         dao.cadastro(gerente);
     }
 
-    public void remove_gerente() {
+    public String remove_gerente() {
         m.askCpf();
         String cpf = in.next();
         in.nextLine();
-        dao.remover(cpf);
-        m.removido();
+        if (dao.remover(cpf)) {
+            m.removido();
+            return cpf;
+        }
+        return "nao encontrado!";
+
     }
 
-    public void busca_cpf() {
+    public String busca_cpf() {
         m.askCpf();
         String cpf = in.next();
         in.nextLine();
-        dao.buscarCpf(cpf);
+        if (dao.buscarCpf(cpf)) {
+            return cpf;
+        }
+        return "nao encontrado!";
     }
 
-    public void busca_matricula() {
+    public int busca_matricula() {
         m.askMatricula();
         int matricula = in.nextInt();
-        dao.buscarMatricula(matricula);
+        if(dao.buscarMatricula(matricula)){
+            return matricula;
+        }
+        return '0';
+    }
+    
+    public boolean loginSenha(){
+        m.askLogin();
+        String l = in.next();
+        in.nextLine();
+        m.askSenha();
+        String s = in.next();
+        in.nextLine();
+        if(dao.buscaLoginSenha(l, s)){
+            return true;
+        }
+        return false;
     }
 }

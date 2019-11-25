@@ -44,59 +44,49 @@ public class ClienteDAO {
                 System.out.println("Telefone: " + clientes.get(i).getTelefone());
                 System.out.println("Endereco: " + clientes.get(i).getEndereco());
                 System.out.println("Email: " + clientes.get(i).getEmail());
-                System.out.println("Login: " + clientes.get(i).getLogin());
                 System.out.println("CPF: " + clientes.get(i).getCpf());
 
             }
         }
     }
-    
-    public void buscarCpf(String cpf) {
+
+    public boolean buscaCpf(String cpf) {
         for (int i = 0; i < clientes.size(); i++) {
             if (clientes.get(i).getCpf().equals(cpf)) {
                 System.out.println("Nome: " + clientes.get(i).getNome());
                 System.out.println("Telefone: " + clientes.get(i).getTelefone());
                 System.out.println("Endereco: " + clientes.get(i).getEndereco());
                 System.out.println("Email: " + clientes.get(i).getEmail());
-                System.out.println("Login: " + clientes.get(i).getLogin());
                 System.out.println("CPF: " + clientes.get(i).getCpf());
-                
-            } else {
-                m.naoEncontrado();
+                return true;
             }
         }
+        return false;
     }
 
-    public void buscarLogin(String login) {
+    public boolean buscaLogin(String login) {
         for (int i = 0; i < clientes.size(); i++) {
             if (clientes.get(i).getLogin().equals(login)) {
                 System.out.println("Nome: " + clientes.get(i).getNome());
                 System.out.println("Telefone: " + clientes.get(i).getTelefone());
                 System.out.println("Endereco: " + clientes.get(i).getEndereco());
                 System.out.println("Email: " + clientes.get(i).getEmail());
-                System.out.println("Login: " + clientes.get(i).getLogin());
                 System.out.println("CPF: " + clientes.get(i).getCpf());
-            } else {
-                m.naoEncontrado();
+                return true;
             }
         }
+        return false;
     }
-    
-    public boolean buscarLoginSenha(String login, String senha) {
-        for (int i = 0; i < clientes.size(); i++) {
-            if (clientes.get(i).getLogin().equals(login)) {
-                return clientes.get(i).getSenha().equals(senha);
-            } else {
-                m.naoEncontrado();
-                return false;
-            }
-        }
-        return buscarLoginSenha(login, senha);
-    }
-    
 
-    public List<Cliente> getClientes() {
-        return clientes;
+    public boolean buscaLoginSenha(String l, String s) {
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getLogin().equals(l)) {
+                if (clientes.get(i).getSenha().equals(s)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

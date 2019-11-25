@@ -25,16 +25,16 @@ public class EstoqueDAO {
         estoques.add(estoque);
     }
 
-    public void remover(String nome) {
+    public boolean remover(String nome) {
         for (int i = 0; i < estoques.size(); i++) {
             Estoque c = estoques.get(i);
             if (c.getProduto().getNome().equals(nome)) {
                 System.out.println(c);
                 estoques.remove(c);
-            } else {
-                m.naoEncontrado();
-            }
+                return true;
+            } 
         }
+        return false;
     }
 
     public void listar() {
@@ -51,7 +51,7 @@ public class EstoqueDAO {
         }
     }
 
-    public void buscarNome(String nome) {
+    public boolean buscarNome(String nome) {
         for (int i = 0; i < estoques.size(); i++) {
             if (estoques.get(i).getProduto().getNome().equals(nome)) {
                 System.out.println("Nome: " + estoques.get(i).getProduto().getNome());
@@ -59,26 +59,13 @@ public class EstoqueDAO {
                 System.out.println("Preço: " + estoques.get(i).getProduto().getPreco());
                 System.out.println("Cor: " + estoques.get(i).getProduto().getCor());
                 System.out.println("Tamanho: " + estoques.get(i).getProduto().getTamanho());
-            } else {
-                m.naoEncontrado();
-            }
+                return true;
+            } 
         }
+        return false;
     }
     
-    public boolean buscaNome(String nome) {
-        boolean c = false;
-        for (int i = 0; i < estoques.size(); i++) {
-            if (estoques.get(i).getProduto().getNome().equals(nome)) {
-                c = true;
-            } else {
-                m.naoEncontrado();
-                c = false;
-            }
-        }
-        return c;
-    }
-
-    public void buscarTamanho(int tam) {
+    public boolean buscarTamanho(int tam) {
         for (int i = 0; i < estoques.size(); i++) {
             if (estoques.get(i).getProduto().getTamanho() == tam) {
                 System.out.println("Nome: " + estoques.get(i).getProduto().getNome());
@@ -86,23 +73,22 @@ public class EstoqueDAO {
                 System.out.println("Preço: " + estoques.get(i).getProduto().getPreco());
                 System.out.println("Cor: " + estoques.get(i).getProduto().getCor());
                 System.out.println("Tamanho: " + estoques.get(i).getProduto().getTamanho());
-            } else {
-                m.naoEncontrado();
-            }
+                return true;
+            } 
         }
+        return false;
     }
   
-    public void atualizarEstoque(String nome){
+    public boolean atualizarEstoque(String nome){
         for (int i = 0; i < estoques.size(); i++) {
             if (estoques.get(i).getProduto().getNome().equals(nome)) {
                 m.askQuantidade();
                 int qtd = in.nextInt();
                 estoques.get(i).setQuantidade(qtd);                
-            }
-            else{
-                m.naoEncontrado();
+                return true;
             }
         }
+        return false;
     }
 
 }

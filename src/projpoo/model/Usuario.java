@@ -5,14 +5,11 @@
  */
 package projpoo.model;
 
-import java.util.Objects;
-
 /**
  *
  * @author clara
  */
 public class Usuario extends Pessoa {
-
     private String login;
     private String senha;
 
@@ -41,27 +38,6 @@ public class Usuario extends Pessoa {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Usuario other = (Usuario) obj;
-        if (!Objects.equals(this.login, other.login)) {
-            return false;
-        }
-        if (!Objects.equals(this.senha, other.senha)) {
-            return false;
-        }
-        return true;
-    }
-    
+   
     
 }

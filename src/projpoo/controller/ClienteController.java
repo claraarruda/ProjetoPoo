@@ -33,7 +33,7 @@ public class ClienteController {
             cpf = in.next();
             in.nextLine();
         }
-        
+
         //cad. telefone
         m.askTelefone();
         String telefone = in.nextLine();
@@ -71,7 +71,7 @@ public class ClienteController {
         cliente.setEmail(email);
         cliente.setLogin(login);
         cliente.setSenha(senha);
-        
+
         dao.cadastro(cliente);
     }
 
@@ -83,17 +83,36 @@ public class ClienteController {
         m.removido();
     }
 
-    public void busca_cpf() {
+    public String busca_cpf() {
         m.askCpf();
         String cpf = in.next();
         in.nextLine();
-        dao.buscarCpf(cpf);
+        if (dao.buscaCpf(cpf)) {
+            return cpf;
+        }
+        return "nao encontrado";
     }
 
-    public void busca_login() {
+    public String busca_login() {
         m.askLogin();
         String login = in.next();
         in.nextLine();
-        dao.buscarLogin(login);
+        if (dao.buscaLogin(login)) {
+            return login;
+        }
+        return "nao encontrado!";
+    }
+    
+    public boolean loginSenha(){
+        m.askLogin();
+        String l = in.next();
+        in.nextLine();
+        m.askSenha();
+        String s = in.next();
+        in.nextLine();
+        if(dao.buscaLoginSenha(l, s)){
+            return true;
+        }
+        return false;
     }
 }

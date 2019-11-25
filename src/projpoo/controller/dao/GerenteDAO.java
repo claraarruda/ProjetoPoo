@@ -23,16 +23,16 @@ public class GerenteDAO {
         gerentes.add(gerente);
     }
 
-    public void remover(String cpf) {
+    public boolean remover(String cpf) {
         for (int i = 0; i < gerentes.size(); i++) {
             Gerente g = gerentes.get(i);
             if (g.getCpf().equals(cpf)) {
                 System.out.println(g);
                 gerentes.remove(g);
-            } else {
-                m.naoEncontrado();
+                return true;
             }
         }
+        return false;
     }
 
     public void listarGerentes() {
@@ -46,12 +46,11 @@ public class GerenteDAO {
                 System.out.println("Login: " + gerentes.get(i).getLogin());
                 System.out.println("CPF: " + gerentes.get(i).getCpf());
                 System.out.println("Matricula: " + gerentes.get(i).getMatricula());
-
             }
         }
     }
 
-    public void buscarCpf(String cpf) {
+    public boolean buscarCpf(String cpf) {
         for (int i = 0; i < gerentes.size(); i++) {
             if (gerentes.get(i).getCpf().equals(cpf)) {
                 System.out.println("Nome: " + gerentes.get(i).getNome());
@@ -60,14 +59,13 @@ public class GerenteDAO {
                 System.out.println("Login: " + gerentes.get(i).getLogin());
                 System.out.println("CPF: " + gerentes.get(i).getCpf());
                 System.out.println("Matricula: " + gerentes.get(i).getMatricula());
-
-            } else {
-                m.naoEncontrado();
-            }
+                return true;
+            } 
         }
+        return false;
     }
 
-    public void buscarMatricula(int matricula) {
+    public boolean buscarMatricula(int matricula) {
         for (int i = 0; i < gerentes.size(); i++) {
             if (gerentes.get(i).getMatricula() == matricula) {
                 System.out.println("Nome: " + gerentes.get(i).getNome());
@@ -76,10 +74,21 @@ public class GerenteDAO {
                 System.out.println("Login: " + gerentes.get(i).getLogin());
                 System.out.println("CPF: " + gerentes.get(i).getCpf());
                 System.out.println("Matricula: " + gerentes.get(i).getMatricula());
-            } else {
-                m.naoEncontrado();
-            }
+                return true;
+            } 
         }
+        return false;
+    }
+    
+    public boolean buscaLoginSenha(String l, String s){
+        for (int i = 0; i < gerentes.size(); i++) {
+            if (gerentes.get(i).getLogin().equals(l)) {
+                if(gerentes.get(i).getSenha().equals(s)){
+                    return true;
+                }
+            } 
+        }
+        return false;
     }
 
 }

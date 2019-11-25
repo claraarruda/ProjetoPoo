@@ -51,7 +51,7 @@ public class Menus {
                         m.senhaIncorreta();
                         senha = in.next();
                         in.nextLine();
-                    }
+                    }                    
                     menuGerente();
                 default:
                     break;
@@ -60,24 +60,17 @@ public class Menus {
     }
 
     public void login() {
-        m.askLogin();
-        String login = in.next();
-        in.nextLine();
-        m.askSenha();
-        String senha = in.next();
-        in.nextLine();
-        if (!cd.buscarLoginSenha(login, senha)) {
-            m.senhaIncorreta();
-            senha = in.next();
-            in.nextLine();
-        } else {
+        if (gc.loginSenha()) {
             cliente();
+        }
+        else{
+            m.senhaIncorreta();
         }
     }
 
     public void cliente() {
         do {
-            System.out.println("Escolha uma das opções:\n0 - sair\n1 - Ver todos produtos\n2 - Pesquisar por nome\n3 - Pesquisar por tamanho\n4 - Adicionar produtos ao carrinho\n5 - Remover produtos do carrinho\n: ");
+            System.out.println("Escolha uma das opções:\n0 - sair\n1 - Ver todos produtos\n2 - Pesquisar por nome\n3 - Pesquisar por tamanho\n4 - Adicionar produtos a lista de desejos\n5 - Remover produtos da lista de desejos\n: ");
             switch (op) {
                 case '1':
                     ec.lista_estq();
@@ -117,11 +110,13 @@ public class Menus {
         } while (op != '0');
     }
 
-    public void loginGerente() {
-        m.askMatricula();
-        int mat = in.nextInt();
-        gd.buscarMatricula(mat);
-        gerencia();
+    public void loginGerente() {       
+        if (gc.loginSenha()) {
+            gerencia();
+        }
+        else{
+            m.senhaIncorreta();
+        }
     }
 
     public void gerencia() {
