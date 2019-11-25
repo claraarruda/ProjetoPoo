@@ -9,8 +9,9 @@ package projpoo.view;
  *
  * @author clara
  */
-public class Manager {
+public class Manager implements Welcome {
 
+    @Override
     public void boasVindas(){
         System.out.println("BEM VINDO!\n\nGreatWalk\n>>>> Maior loja de calçados de toda Internet <<<<\n");
     }

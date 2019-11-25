@@ -13,6 +13,11 @@ public class Gerente extends Usuario {
     
     private int matricula;
 
+    public Gerente(String login, String senha, String nome, String end, String tel, String cpf, int matricula) {
+        super(login, senha, nome, end, tel, cpf);
+        this.matricula = matricula;
+    }
+
     public Gerente(){
         
     }

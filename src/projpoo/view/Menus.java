@@ -7,13 +7,8 @@ package projpoo.view;
 
 import java.util.Scanner;
 import projpoo.controller.ClienteController;
-import projpoo.controller.EstoqueController;
 import projpoo.controller.GerenteController;
-import projpoo.controller.PedidoController;
 import projpoo.controller.ProdutoController;
-import projpoo.controller.dao.ClienteDAO;
-import projpoo.controller.dao.GerenteDAO;
-
 /**
  *
  * @author clara
@@ -23,13 +18,9 @@ public class Menus {
     Scanner in = new Scanner(System.in);
     char op;
     Manager m = new Manager();
-    PedidoController pdc = new PedidoController();
-    EstoqueController ec = new EstoqueController();
     ProdutoController pc = new ProdutoController();
     ClienteController cc = new ClienteController();
     GerenteController gc = new GerenteController();
-    ClienteDAO cd = new ClienteDAO();
-    GerenteDAO gd = new GerenteDAO();
 
     public void menuPrincipal() {
         do {
@@ -53,6 +44,7 @@ public class Menus {
                         in.nextLine();
                     }                    
                     menuGerente();
+                    break;
                 default:
                     break;
             }
@@ -60,7 +52,7 @@ public class Menus {
     }
 
     public void login() {
-        if (gc.loginSenha()) {
+        if (cc.loginSenha()) {
             cliente();
         }
         else{
@@ -70,23 +62,29 @@ public class Menus {
 
     public void cliente() {
         do {
-            System.out.println("Escolha uma das opções:\n0 - sair\n1 - Ver todos produtos\n2 - Pesquisar por nome\n3 - Pesquisar por tamanho\n4 - Adicionar produtos a lista de desejos\n5 - Remover produtos da lista de desejos\n: ");
+            System.out.println("Escolha uma das opções:\n0 - sair\n1 - Ver todos produtos\n2 - Pesquisar por nome\n3 - Pesquisar por tamanho\n4 - Adicionar produtos a lista de desejos\n5 - Remover produtos da lista de desejos\n6 - Ver lista de desejos\n7 - Voltar:");
+            op = in.next().charAt(0);
             switch (op) {
                 case '1':
-                    ec.lista_estq();
+                    pc.lista_estq();
                     break;
                 case '2':
-                    ec.busca_nome();
+                    pc.busca_nome();
                     break;
                 case '3':
-                    ec.busca_tam();
+                    pc.busca_tam();
                     break;
                 case '4':
-                    pdc.cadastro_pedido();
-                    pdc.totalPedido();
+                    pc.adcDesejo();
                     break;
                 case '5':
-                    pdc.remover();
+                    pc.removerDesejo();
+                    break;
+                case '6':
+                    pc.listarDesejo();
+                    break;
+                case '7':
+                    menuPrincipal();
                     break;
                 default:
                     break;
@@ -96,13 +94,18 @@ public class Menus {
 
     public void menuGerente() {
         do {
-            System.out.println("Digite uma das opções:\n0 - Sair\n1 - Cadastrar Gerente\n2 - Login Gerente");
+            System.out.println("Digite uma das opções:\n0 - Sair\n1 - Cadastrar Gerente\n2 - Login Gerente\n3 - Voltar:");
             op = in.next().charAt(0);
             switch (op) {
                 case '1':
                     gc.cadastro_gerente();
+                    break;
                 case '2':
                     loginGerente();
+                    break;
+                case '3':
+                    menuPrincipal();
+                    break;
                 default:
                     break;
             }
@@ -121,19 +124,25 @@ public class Menus {
 
     public void gerencia() {
         do {
-            System.out.println("Escolha uma das opções:\n0 - sair\n1 - Adicionar produto ao estoque\n2 - Excluir produto do estoque\n3 - Atualizar estoque\n4 - Consultar estoque");
-            switch (op) {
+                System.out.println("Escolha uma das opções:\n0 - sair\n1 - Adicionar produto ao estoque\n2 - Excluir produto do estoque\n3 - Atualizar estoque\n4 - Consultar estoque\n5 - Voltar:");
+            op = in.next().charAt(0);
+            switch(op) {
                 case '1':
                     pc.cadastro_produto();
                     break;
                 case '2':
-                    ec.remove_estq();
+                    pc.remove_estq();
                     break;
                 case '3':
-                    ec.atualiza_estoque();
+                    pc.atualiza_estoque();
                     break;
                 case '4':
-                    ec.lista_estq();
+                    pc.lista_estq();
+                    break;
+                case '5':
+                    menuPrincipal();
+                    break;
+                default:
                     break;
             }
         } while (op != '0');

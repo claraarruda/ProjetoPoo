@@ -36,18 +36,15 @@ public class ClienteDAO {
     }
 
     public void listarClientes() {
-        if (clientes.isEmpty()) {
-            m.listaVazia();
-        } else {
-            for (int i = 0; i < clientes.size(); i++) {
-                System.out.println("Nome: " + clientes.get(i).getNome());
-                System.out.println("Telefone: " + clientes.get(i).getTelefone());
-                System.out.println("Endereco: " + clientes.get(i).getEndereco());
-                System.out.println("Email: " + clientes.get(i).getEmail());
-                System.out.println("CPF: " + clientes.get(i).getCpf());
+        for (int i = 0; i < clientes.size(); i++) {
+            System.out.println("Nome: " + clientes.get(i).getNome());
+            System.out.println("Telefone: " + clientes.get(i).getTelefone());
+            System.out.println("Endereco: " + clientes.get(i).getEndereco());
+            System.out.println("Email: " + clientes.get(i).getEmail());
+            System.out.println("CPF: " + clientes.get(i).getCpf());
 
-            }
         }
+
     }
 
     public boolean buscaCpf(String cpf) {
